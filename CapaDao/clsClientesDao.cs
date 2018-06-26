@@ -14,7 +14,7 @@ namespace CapaCodigo
 
         public void InsertarClientes(clsclientes cli)
         {
-            SqlCommand cmd = new SqlCommand("SP_INSERTAR_CLIENTES", Conexion());
+            SqlCommand cmd = new SqlCommand("PA_GENERAR_COD_CLIENTE", Conexion());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@NOMBRE", cli.nombres);
             cmd.Parameters.AddWithValue("@DIRECCION", cli.direccion);

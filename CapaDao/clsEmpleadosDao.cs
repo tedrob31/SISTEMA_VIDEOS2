@@ -15,7 +15,7 @@ namespace CapaCodigo
         public Boolean VerificarUsuario(clsEmpleadoEntity em,int x)
         {
 
-            SqlCommand cmd = new SqlCommand("SP_ACCESO_USUARIO", Conexion(x));
+            SqlCommand cmd = new SqlCommand("SP_ACCESO_USUARIO", Conexion());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@USU", em.ususario);
             SqlDataReader dr = cmd.ExecuteReader();
@@ -31,7 +31,7 @@ namespace CapaCodigo
         public Boolean VerificarContra(clsEmpleadoEntity em,int x)
         {
 
-            SqlCommand cmd = new SqlCommand("SP_ACCESO_CONTRA", Conexion(x));
+            SqlCommand cmd = new SqlCommand("SP_ACCESO_CONTRA", Conexion());
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@CONTRA", em.clave);
             SqlDataReader dr = cmd.ExecuteReader();
