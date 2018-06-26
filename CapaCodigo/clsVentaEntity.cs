@@ -9,6 +9,7 @@ namespace CapaCodigo
     class clsVentaEntity
     {
         public String idVenta { get; set; }
+
         public String cliente { get; set; }
         public String idempleado { get; set; }
         public DateTime fecha { get; set; }

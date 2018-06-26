@@ -65,9 +65,10 @@
             // 
             // dtpFecNac
             // 
+            this.dtpFecNac.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFecNac.Location = new System.Drawing.Point(103, 82);
             this.dtpFecNac.Name = "dtpFecNac";
-            this.dtpFecNac.Size = new System.Drawing.Size(200, 20);
+            this.dtpFecNac.Size = new System.Drawing.Size(117, 20);
             this.dtpFecNac.TabIndex = 10;
             // 
             // label8
@@ -89,6 +90,9 @@
             // cmbSex
             // 
             this.cmbSex.FormattingEnabled = true;
+            this.cmbSex.Items.AddRange(new object[] {
+            "M",
+            "F"});
             this.cmbSex.Location = new System.Drawing.Point(352, 29);
             this.cmbSex.Name = "cmbSex";
             this.cmbSex.Size = new System.Drawing.Size(38, 21);
@@ -136,6 +140,7 @@
             this.dgvMostrarActores.Name = "dgvMostrarActores";
             this.dgvMostrarActores.Size = new System.Drawing.Size(406, 199);
             this.dgvMostrarActores.TabIndex = 3;
+            this.dgvMostrarActores.DoubleClick += new System.EventHandler(this.dgvMostrarActores_DoubleClick);
             // 
             // label7
             // 
@@ -164,6 +169,7 @@
             this.btnEliminar.TabIndex = 6;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnRegistrar
             // 
@@ -188,6 +194,7 @@
             this.Controls.Add(this.dgvMostrarActores);
             this.Name = "frmActores";
             this.Text = "frmActores";
+            this.Load += new System.EventHandler(this.frmActores_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMostrarActores)).EndInit();
