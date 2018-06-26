@@ -12,32 +12,52 @@ namespace CapaCodigo
     {
         clsclientes oCli = new clsclientes();
 
-        //public void InsertarClientes(clsclientes cli)
-        //{
-        //    SqlCommand cmd = new SqlCommand("SP_INSERTAR_CLIENTES", Conectar());
-        //    cmd.CommandType = CommandType.StoredProcedure;
-        //    cmd.Parameters.AddWithValue("@NOMBRE", cli.nombres);
-        //    cmd.Parameters.AddWithValue("@DIRECCION", cli.direccion);
-        //    cmd.Parameters.AddWithValue("@TELEFONO", cli.telefono);
-        //    cmd.Parameters.AddWithValue("@DNI", cli.dni);
-        //    cmd.ExecuteNonQuery();
+        public void InsertarClientes(clsclientes cli)
+        {
+            SqlCommand cmd = new SqlCommand("SP_INSERTAR_CLIENTES", Conexion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@NOMBRE", cli.nombres);
+            cmd.Parameters.AddWithValue("@DIRECCION", cli.direccion);
+            cmd.Parameters.AddWithValue("@TELEFONO", cli.telefono);
+            cmd.Parameters.AddWithValue("@DNI", cli.dni);
+            cmd.ExecuteNonQuery();
 
-        //}
-        
-        //public DataTable llenarClientes()
-        //{
-        //    try
-        //    {
-        //        SqlCommand llenar = new SqlCommand("select * from clientes", Conectar());
-        //        llenar.CommandType= CommandType.StoredProcedure;
+        }
+        public DataTable GenerarCodigoCliente()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("GENERAR_CODIGO_CLIENTE", Conexion());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
 
-        //    }
-        //    catch
-        //    {
-        //        return llenar;
-        //    }
-        //}
+        }
+        public DataTable llenarClientes()
+        {
+            SqlDataAdapter da = new SqlDataAdapter("select * from CLIENTES", Conexion());
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
 
+        }
+        public void EliminarCliente(int i)
+        {
+            SqlCommand cmd = new SqlCommand("SP_ELIMINAR_CLIENTE", Conexion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", i);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void ActualizarClientes(clsclientes cli)
+        {
+            SqlCommand cmd = new SqlCommand("SP_ACTUALIZAR_CLIENTES", Conexion());
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", cli.codclient);
+            cmd.Parameters.AddWithValue("@NOMBRE", cli.nombres);
+            cmd.Parameters.AddWithValue("@DIRECCION", cli.direccion);
+            cmd.Parameters.AddWithValue("@TELEFONO", cli.telefono);
+            cmd.Parameters.AddWithValue("@DNI", cli.dni);
+            cmd.ExecuteNonQuery();
+        }
 
 
     }
