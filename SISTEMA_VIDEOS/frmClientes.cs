@@ -42,5 +42,10 @@ namespace SISTEMA_VIDEOS
                 inicio();
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
