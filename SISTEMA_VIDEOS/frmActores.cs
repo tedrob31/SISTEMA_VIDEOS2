@@ -23,21 +23,26 @@ namespace SISTEMA_VIDEOS
         private void inicio()
         {
             txtNombre.Clear();
-            cmbPais.SelectedIndex = -1;
-            cmbSex.SelectedIndex = -1;
+            cmbPais.Text = "";
+            cmbSex.Text = "";
             dtpFecNac.Text = "";
         }
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
+            llenandoActor();
+            oactDao.InsertarActores(oAct);
+            inicio();
+            llenarActores();
+        }
+        private void llenandoActor()
+        {
+            
             oAct.nombre = txtNombre.Text;
             oAct.pais = cmbPais.Text;
             oAct.sexo = cmbSex.Text;
             oAct.fecnac = dtpFecNac.Value;
-            oactDao.InsertarActores(oAct);
-            inicio();
         }
-
         private void frmActores_Load(object sender, EventArgs e)
         {
             llenarActores();
@@ -57,7 +62,19 @@ namespace SISTEMA_VIDEOS
 
         private void dgvMostrarActores_DoubleClick(object sender, EventArgs e)
         {
+            txtNombre.Text = dgvMostrarActores.CurrentRow.Cells[1].Value.ToString();
+            cmbPais.Text = dgvMostrarActores.CurrentRow.Cells[2].Value.ToString();
+            cmbSex.Text = dgvMostrarActores.CurrentRow.Cells[3].Value.ToString();
+            dtpFecNac.Text = dgvMostrarActores.CurrentRow.Cells[4].Value.ToString();
+        }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            oAct.codAcotr = Convert.ToInt32(dgvMostrarActores.CurrentRow.Cells[0].Value.ToString());
+            llenandoActor();
+            oactDao.ModificarActores(oAct);
+            inicio();
+            llenarActores();
         }
     }
 }
