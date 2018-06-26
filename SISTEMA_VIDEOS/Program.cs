@@ -16,7 +16,7 @@ namespace SISTEMA_VIDEOS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmActores());
+            Application.Run(new Form1());
         }
     }
 }

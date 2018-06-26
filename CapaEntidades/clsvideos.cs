@@ -9,13 +9,14 @@ namespace CapaEntidades
     public class clsvideos
     {
         public int codvideo { get; set; }
-        public int codgenero { get; set; }
+        public string genero { get; set; }
         public int coddirector { get; set; }
         public int codactor { get; set; }
         public string titulo { get; set; }
         public string estreno { get; set; }
         public string descripcion { get; set; }
         public string clasificacion { get; set; }
+        public int stock { get; set; }
         public string idioma { get; set; }
         public string resolucion { get; set; }
         public decimal precio { get; set; }

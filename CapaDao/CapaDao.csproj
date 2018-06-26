@@ -43,6 +43,7 @@
     <Compile Include="clsActoresDao.cs" />
     <Compile Include="clsClientesDao.cs" />
     <Compile Include="clsEmpleadosDao.cs" />
+    <Compile Include="clsVideoDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
